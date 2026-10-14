@@ -45,7 +45,7 @@ export default function Home() {
     };
   }, []);
   const [status, setStatus] = useState("未着手");
-
+  const [reminderDays, setReminderDays] = useState<number | null>(null);
   useEffect(() => {
     let isActive = true;
 
@@ -74,6 +74,7 @@ export default function Home() {
           memo: string;
           goal: string;
           status: string;
+          reminder_days: number | null;
         }
       > = {};
 
@@ -83,6 +84,7 @@ export default function Home() {
           memo: record.memo,
           goal: record.goal,
           status: record.status,
+          reminder_days: record.reminder_days,
         };
       });
 
@@ -116,6 +118,7 @@ export default function Home() {
         memo: string;
         goal: string;
         status: string;
+        reminder_days: number | null;
       }
     >
   >({});
@@ -147,6 +150,7 @@ export default function Home() {
         memo: memo,
         goal: goal,
         status: status,
+        reminder_days: reminderDays,
       },
       {
         onConflict: "user_id,date",
@@ -165,6 +169,7 @@ export default function Home() {
         memo,
         goal,
         status,
+        reminder_days: reminderDays,
       },
     }));
 
