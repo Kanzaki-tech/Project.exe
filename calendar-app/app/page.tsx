@@ -48,6 +48,11 @@ export default function Home() {
 
   useEffect(() => {
     const fetchRecords = async () => {
+      if (!user) {
+        setRecords({});
+        return;
+      }
+
       const { data, error } = await supabase.from("records").select("*");
 
       if (error) {
