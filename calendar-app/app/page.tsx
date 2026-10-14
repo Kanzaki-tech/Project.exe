@@ -47,21 +47,25 @@ export default function Home() {
   const [status, setStatus] = useState("未着手");
 
   useEffect(() => {
+    let isActive = true;
+
     const fetchRecords = async () => {
       if (!user) {
         setRecords({});
         return;
       }
 
-      const { data, error } = await supabase.from("records").select("*");
+      const { data, error } = await supabase
+        .from("records")
+        .select("*")
+        .eq("user_id", user.id);
+
+      if (!isActive) return;
 
       if (error) {
         console.error("Supabaseエラー:", error);
         return;
       }
-
-      setAuthError("");
-      console.log("ログイン成功:", data);
 
       const convertedRecords: Record<
         string,
@@ -82,12 +86,14 @@ export default function Home() {
         };
       });
 
-      console.log("変換後:", convertedRecords);
-
       setRecords(convertedRecords);
     };
 
     fetchRecords();
+
+    return () => {
+      isActive = false;
+    };
   }, [user]);
 
   useEffect(() => {
