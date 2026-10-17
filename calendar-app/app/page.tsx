@@ -249,11 +249,13 @@ export default function Home() {
       setMemo(record.memo);
       setGoal(record.goal);
       setStatus(record.status);
+      setReminderDays(record.reminder_days);
     } else {
       setTitle("");
       setMemo("");
       setGoal("");
       setStatus("未着手");
+      setReminderDays(null);
     }
 
     setSelectedDay(day);
