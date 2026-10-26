@@ -637,6 +637,25 @@ export default function Home() {
               </div>
 
               <div className="record-field">
+                <p className="input-label">リマインダー通知</p>
+
+                <select
+                  value={reminderUnit ?? ""}
+                  onChange={(e) => {
+                    const unit = e.target.value;
+
+                    setReminderUnit(unit === "" ? null : unit);
+                    setReminderValue(unit === "" ? null : 1);
+                  }}
+                >
+                  <option value="">通知なし</option>
+                  <option value="days">日前</option>
+                  <option value="hours">時間前</option>
+                  <option value="minutes">分前</option>
+                </select>
+              </div>
+
+              <div className="record-field">
                 <p className="input-label">やったこと</p>
 
                 <textarea
