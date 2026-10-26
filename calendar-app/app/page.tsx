@@ -83,6 +83,10 @@ export default function Home() {
           goal: string;
           status: string;
           reminder_days: number | null;
+          event_time: string | null;
+          reminder_unit: string | null;
+          reminder_value: number | null;
+          reminder_time: string | null;
         }
       > = {};
 
@@ -93,6 +97,10 @@ export default function Home() {
           goal: record.goal,
           status: record.status,
           reminder_days: record.reminder_days,
+          event_time: record.event_time,
+          reminder_unit: record.reminder_unit,
+          reminder_value: record.reminder_value,
+          reminder_time: record.reminder_time,
         };
       });
 
@@ -127,6 +135,10 @@ export default function Home() {
         goal: string;
         status: string;
         reminder_days: number | null;
+        event_time: string | null;
+        reminder_unit: string | null;
+        reminder_value: number | null;
+        reminder_time: string | null;
       }
     >
   >({});
@@ -182,6 +194,10 @@ export default function Home() {
         goal,
         status,
         reminder_days: reminderDays,
+        event_time: eventTime || null,
+        reminder_unit: reminderUnit,
+        reminder_value: reminderValue,
+        reminder_time: reminderUnit === "days" ? reminderTime : null,
       },
     }));
 
