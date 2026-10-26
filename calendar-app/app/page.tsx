@@ -193,7 +193,7 @@ export default function Home() {
         memo,
         goal,
         status,
-        reminder_days: reminderDays,
+        reminder_days: null,
         event_time: eventTime || null,
         reminder_unit: reminderUnit,
         reminder_value: reminderValue,
