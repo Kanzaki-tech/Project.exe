@@ -269,6 +269,7 @@ export default function Home() {
 
     closeModal();
   };
+
   const openDay = (day: number) => {
     const record = records[getDateKey(day)];
 
@@ -277,17 +278,26 @@ export default function Home() {
       setMemo(record.memo);
       setGoal(record.goal);
       setStatus(record.status);
-      setReminderDays(record.reminder_days);
+
+      setEventTime(record.event_time ?? "");
+      setReminderUnit(record.reminder_unit);
+      setReminderValue(record.reminder_value);
+      setReminderTime(record.reminder_time ?? "09:00");
     } else {
       setTitle("");
       setMemo("");
       setGoal("");
       setStatus("未着手");
-      setReminderDays(null);
+
+      setEventTime("");
+      setReminderUnit(null);
+      setReminderValue(null);
+      setReminderTime("09:00");
     }
 
     setSelectedDay(day);
   };
+
   const closeDeadlinePanel = () => {
     setIsDeadlineClosing(true);
 
@@ -616,6 +626,16 @@ export default function Home() {
               </div>
             </div>
             <div className="record-fields">
+              <div className="record-field">
+                <p className="input-label">予定の開始時刻</p>
+
+                <input
+                  type="time"
+                  value={eventTime}
+                  onChange={(e) => setEventTime(e.target.value)}
+                />
+              </div>
+
               <div className="record-field">
                 <p className="input-label">やったこと</p>
 
