@@ -636,6 +636,20 @@ export default function Home() {
                 />
               </div>
 
+              {reminderUnit !== null && (
+                <input
+                  type="number"
+                  min="1"
+                  step="1"
+                  value={reminderValue ?? ""}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setReminderValue(value === "" ? null : Number(value));
+                  }}
+                  placeholder="通知までの数値"
+                />
+              )}
+
               <div className="record-field">
                 <p className="input-label">リマインダー通知</p>
 
