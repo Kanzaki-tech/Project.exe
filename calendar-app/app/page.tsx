@@ -44,8 +44,16 @@ export default function Home() {
       subscription.unsubscribe();
     };
   }, []);
+
   const [status, setStatus] = useState("未着手");
+
+  const [eventTime, setEventTime] = useState("");
+  const [reminderUnit, setReminderUnit] = useState<string | null>(null);
+  const [reminderValue, setReminderValue] = useState<number | null>(null);
+  const [reminderTime, setReminderTime] = useState("09:00");
+
   const [reminderDays, setReminderDays] = useState<number | null>(null);
+
   useEffect(() => {
     let isActive = true;
 
@@ -150,7 +158,11 @@ export default function Home() {
         memo: memo,
         goal: goal,
         status: status,
-        reminder_days: reminderDays,
+        reminder_days: null,
+        event_time: eventTime || null,
+        reminder_unit: reminderUnit,
+        reminder_value: reminderValue,
+        reminder_time: reminderUnit === "days" ? reminderTime : null,
       },
       {
         onConflict: "user_id,date",
