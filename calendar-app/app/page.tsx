@@ -147,6 +147,30 @@ export default function Home() {
   const saveRecord = async () => {
     if (selectedDay === null) return;
 
+    if (reminderUnit !== null) {
+      if (
+        reminderValue === null ||
+        !Number.isInteger(reminderValue) ||
+        reminderValue < 1
+      ) {
+        alert("通知までの数値は1以上の整数で入力してください");
+        return;
+      }
+
+      if (
+        (reminderUnit === "hours" || reminderUnit === "minutes") &&
+        !eventTime
+      ) {
+        alert("時間前・分前の通知には予定の開始時刻が必要です");
+        return;
+      }
+
+      if (reminderUnit === "days" && !reminderTime) {
+        alert("通知する時刻を入力してください");
+        return;
+      }
+    }
+
     // 現在ログインしているユーザーを取得
     const {
       data: { user },
@@ -636,20 +660,6 @@ export default function Home() {
                 />
               </div>
 
-              {reminderUnit !== null && (
-                <input
-                  type="number"
-                  min="1"
-                  step="1"
-                  value={reminderValue ?? ""}
-                  onChange={(e) => {
-                    const value = e.target.value;
-                    setReminderValue(value === "" ? null : Number(value));
-                  }}
-                  placeholder="通知までの数値"
-                />
-              )}
-
               <div className="record-field">
                 <p className="input-label">リマインダー通知</p>
 
@@ -657,7 +667,6 @@ export default function Home() {
                   value={reminderUnit ?? ""}
                   onChange={(e) => {
                     const unit = e.target.value;
-
                     setReminderUnit(unit === "" ? null : unit);
                     setReminderValue(unit === "" ? null : 1);
                   }}
@@ -667,6 +676,32 @@ export default function Home() {
                   <option value="hours">時間前</option>
                   <option value="minutes">分前</option>
                 </select>
+
+                {reminderUnit !== null && (
+                  <input
+                    type="number"
+                    min="1"
+                    step="1"
+                    value={reminderValue ?? ""}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setReminderValue(value === "" ? null : Number(value));
+                    }}
+                    placeholder="通知までの数値"
+                  />
+                )}
+
+                {reminderUnit === "days" && (
+                  <div className="record-field">
+                    <p className="input-label">通知する時刻</p>
+
+                    <input
+                      type="time"
+                      value={reminderTime}
+                      onChange={(e) => setReminderTime(e.target.value)}
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="record-field">
