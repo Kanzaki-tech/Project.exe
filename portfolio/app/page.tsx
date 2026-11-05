@@ -8,6 +8,7 @@ export default function Home() {
   const [isClosing, setIsClosing] = useState(false);
   const [isImageOpen, setIsImageOpen] = useState(false);
   const [isImageClosing, setIsImageClosing] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const closeProjectModal = () => {
     setIsClosing(true);
 
@@ -430,7 +431,39 @@ export default function Home() {
           SOMETHING.
         </h2>
 
-        <button>CONTACT ME →</button>
+        <button type="button" onClick={() => setIsContactOpen(true)}>
+          CONTACT ME →
+        </button>
+
+        {isContactOpen && (
+          <div className="contact-modal-overlay">
+            <div className={`contact-modal ${shipporiMincho.className}`}>
+              <button
+                type="button"
+                className="contact-modal-close"
+                onClick={() => setIsContactOpen(false)}
+                aria-label="閉じる"
+              >
+                ×
+              </button>
+
+              <span>05 — CONTACT</span>
+              <h2>GET IN TOUCH.</h2>
+
+              <p>GitHubやSNSからお気軽にご連絡ください。</p>
+
+              <div className="contact-links">
+                <a
+                  href="https://github.com/kanzaki-tech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* ==================== FOOTER ==================== */}
