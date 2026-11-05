@@ -255,7 +255,7 @@ export default function Home() {
                 >
                   GITHUB →
                 </a>
-
+                {/*
                 <a
                   href="ここに公開したサイトのURL"
                   target="_blank"
@@ -263,6 +263,7 @@ export default function Home() {
                 >
                   LIVE DEMO →
                 </a>
+                */}
               </div>
             </div>
             {isImageOpen && (
@@ -383,12 +384,11 @@ export default function Home() {
           <article className="reveal-from-bottom">
             <span>03</span>
 
-            <h3>PROJECT THREE</h3>
+            <h3>COMING SOON</h3>
 
-            <p>AI Application</p>
-            <p>Python / AI / API</p>
+            <p>新しいプロジェクトを開発中です。</p>
 
-            <button>VIEW PROJECT →</button>
+            <p>近日公開予定</p>
           </article>
         </div>
       </section>
