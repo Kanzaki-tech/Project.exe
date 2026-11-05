@@ -321,7 +321,7 @@ export default function Home() {
 
               <div className="project-modal-image">
                 <Image
-                  src="/hackathon.jpg"
+                  src="/Hackathon.JPG"
                   alt="ハッカソンの写真"
                   width={1200}
                   height={800}
