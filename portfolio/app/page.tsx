@@ -420,7 +420,7 @@ export default function Home() {
 
       {/* ==================== CONTACT ==================== */}
 
-      <section className={shipporiMincho.className}>
+      <section id="contact" className={shipporiMincho.className}>
         <p>05 — CONTACT</p>
 
         <h2 className="reveal">
