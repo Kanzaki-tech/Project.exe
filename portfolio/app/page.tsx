@@ -97,8 +97,25 @@ export default function Home() {
           </p>
 
           <div>
-            <button>VIEW PROJECTS →</button>
-            <button>DEVELOPMENT LOG →</button>
+            <button
+              onClick={() =>
+                document.getElementById("projects")?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+            >
+              VIEW PROJECTS →
+            </button>
+
+            <button
+              onClick={() =>
+                document.getElementById("development-log")?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+            >
+              DEVELOPMENT LOG →
+            </button>
           </div>
         </div>
 
@@ -378,7 +395,7 @@ export default function Home() {
 
       {/* ==================== DEVELOPMENT LOG ==================== */}
 
-      <section className={shipporiMincho.className}>
+      <section id="development-log" className={shipporiMincho.className}>
         <div>
           <p>04 — DEVELOPMENT LOG</p>
 
