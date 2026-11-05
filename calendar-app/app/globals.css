@@ -111,10 +111,6 @@ body {
   transform: translateX(4px);
 }
 
-
-
-
-
 .weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -141,10 +137,9 @@ body {
   border-top: 1px solid #222;
 }
 
-
 .calendar-day {
   min-width: 0;
-  
+
   height: 100px;
 
   padding: 15px;
@@ -154,7 +149,6 @@ body {
 
   transition: 0.3s;
   position: relative;
-
 }
 
 .calendar-day:hover {
@@ -166,9 +160,6 @@ body {
   color: #888;
   font-size: 14px;
 }
-
-
-
 
 .record-fields {
   display: grid;
@@ -215,7 +206,7 @@ body {
 
   padding: 40px 20px;
 
-  background:rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(12px);
 
   overflow-y: auto;
@@ -229,7 +220,7 @@ body {
   width: min(90%, 520px);
   padding: 40px;
 
-  background:rgba(15, 15, 15, 0.92);
+  background: rgba(15, 15, 15, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 24px;
 
@@ -506,7 +497,7 @@ body {
 
   top: 50%;
   left: 50%;
-  z-index: 9999;
+  z-index: 100;
 
   width: 420px;
   padding: 32px;
@@ -520,7 +511,7 @@ body {
 
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;
+  pointer-events: auto;
 
   transform: translate(-50%, -50%) scale(0.85);
 
@@ -528,6 +519,15 @@ body {
     opacity 0.25s ease,
     transform 0.25s ease,
     visibility 0.25s ease;
+
+  height: auto;
+  max-height: min(500px, 80vh);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  overscroll-behavior-y: contain;
 }
 .calendar-day:hover .hover-card {
   opacity: 1;
@@ -1185,4 +1185,455 @@ body {
   background: transparent;
   color: #fff;
   opacity: 1;
+}
+/* リマインダー設定 */
+
+.day-modal select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+
+  color: white;
+  font-family: inherit;
+  font-size: 14px;
+
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.day-modal select:focus {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.day-modal select option {
+  background: #151515;
+  color: white;
+}
+/* 時刻入力欄の時計アイコンを白色にする */
+.day-modal input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+/* ===== 時刻選択ボタン ===== */
+
+.time-picker-button {
+  width: 100%;
+  padding: 14px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+
+  color: white;
+  font-family: inherit;
+  font-size: 14px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.time-picker-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.time-picker-icon {
+  font-size: 20px;
+  color: #aaa;
+}
+
+/* ===== 時刻選択モーダル ===== */
+
+.time-picker-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+}
+
+.time-picker-modal {
+  width: min(360px, 100%);
+  padding: 32px;
+  box-sizing: border-box;
+
+  background: #101010;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+
+  animation: timePickerOpen 0.3s ease;
+}
+
+.time-picker-label {
+  margin: 0 0 8px;
+  color: #888;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+}
+
+.time-picker-modal h2 {
+  margin: 0 0 28px;
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* ===== 時間・分の選択欄 ===== */
+
+.time-picker-selects {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  margin-bottom: 28px;
+}
+
+.time-picker-selects select {
+  flex: 1;
+  min-width: 0;
+  padding: 18px 12px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+
+  color: white;
+  font-family: inherit;
+  font-size: 28px;
+  text-align: center;
+
+  outline: none;
+  cursor: pointer;
+}
+
+.time-picker-selects select:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.time-picker-selects select option {
+  background: #151515;
+  color: white;
+}
+
+.time-picker-selects > span {
+  color: #888;
+  font-size: 28px;
+}
+
+/* ===== 決定ボタン ===== */
+
+.time-picker-confirm {
+  width: 100%;
+  padding: 15px;
+
+  background: white;
+  border: none;
+  border-radius: 12px;
+
+  color: #080808;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.time-picker-confirm:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* ===== 表示アニメーション ===== */
+
+@keyframes timePickerOpen {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* ===== スクロール式の時刻選択 ===== */
+
+.time-picker-column {
+  flex: 1;
+  min-width: 0;
+}
+
+.time-picker-column p {
+  margin: 0 0 12px;
+  color: #aaa;
+  font-size: 12px;
+  text-align: center;
+}
+
+.time-picker-list {
+  height: 180px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.03);
+  scrollbar-width: thin;
+  scrollbar-color: #555 transparent;
+}
+
+.time-picker-option {
+  width: 100%;
+  flex-shrink: 0;
+  padding: 12px;
+
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+
+  color: #aaa;
+  font-family: inherit;
+  font-size: 18px;
+  text-align: center;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.time-picker-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.time-picker-option.active {
+  background: white;
+  color: #101010;
+  font-weight: 600;
+}
+/* ホバーカードの開始時刻 */
+
+.hover-event-time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 6px 0 12px;
+
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.hover-event-time::before {
+  content: "◷";
+  color: #aaaaaa;
+  font-size: 20px;
+}
+/* リマインダーの選択肢 */
+.reminder-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.reminder-option {
+  padding: 16px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #aaa;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.reminder-option:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: white;
+}
+
+.reminder-option.active {
+  background: white;
+  border-color: white;
+  color: #101010;
+  font-weight: 600;
+}
+
+/* 通知する数値・時刻 */
+.reminder-value-field {
+  margin-bottom: 20px;
+}
+
+.reminder-value-field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: white;
+  font-family: inherit;
+  font-size: 16px;
+  color-scheme: dark;
+}
+
+.reminder-value-field input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.reminder-number-list {
+  height: 160px;
+  max-width: 240px;
+  margin: 10px auto 0;
+}
+
+.reminder-number-list .time-picker-option {
+  font-size: 16px;
+  padding: 12px;
+}
+.add-record-button {
+  width: 100%;
+  padding: 12px 16px;
+  margin: 12px 0 20px;
+  border: 1px dashed #999;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-record-button:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.day-record-item {
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hover-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.hover-card-ok {
+  padding: 10px 24px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: white;
+  color: black;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.hover-card-ok:hover {
+  background: #ccc;
+}
+
+.calendar-day {
+  overflow-y: auto;
+}
+
+.more-records {
+  margin-left: 19px;
+  margin-top: 6px;
+  font-size: 11px;
+  color: #999;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.calendar-day:hover .hover-card.dismissed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.hover-card-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.hover-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  padding-top: 12px;
+}
+
+.hover-card-content > div + div {
+  border-top: 1px solid #555;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.time-fields-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.time-fields-row .record-field {
+  min-width: 0;
+}
+
+.time-fields-row .time-picker-button {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .time-fields-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.time-fields-row .record-field {
+  min-width: 0;
+}
+
+.time-fields-row .time-picker-button {
+  width: 100%;
 }
