@@ -301,15 +301,17 @@ export default function Home() {
             </button>
           </article>
 
-          <article>
-            <span>02</span>
+          <article className="reveal-right">
+            <span>2026.09</span>
 
-            <h3>PROJECT TWO</h3>
+            <h3>Hackathon — Audience Award</h3>
 
-            <p>Web Application</p>
-            <p>Laravel / PHP / MySQL</p>
-
-            <button>VIEW PROJECT →</button>
+            <p>
+              3人チームで地方創生をテーマにした Webアプリケーションを開発。
+              Supabaseを用いたバックエンド開発を担当。
+              <br />
+              オーディエンス賞を受賞。
+            </p>
           </article>
 
           <article>

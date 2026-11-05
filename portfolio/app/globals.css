@@ -142,7 +142,7 @@ h1 {
   margin: 30px 0;
 
   font-size: clamp(70px, 9vw, 180px);
-  line-height: 1.0;
+  line-height: 1;
   letter-spacing: -0.06em;
   font-weight: 900;
 }
@@ -202,7 +202,7 @@ h2 {
   margin: 20px 0;
 
   font-size: clamp(60px, 9vw, 110px);
-  line-height: 1.0;
+  line-height: 1;
   letter-spacing: -0.06em;
   font-weight: 900;
 }
@@ -321,6 +321,21 @@ h3 {
   margin-top: 15px;
 }
 
+/* ==================== PROJECT AWARD ==================== */
+
+#projects .project-award {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 18px;
+
+  border: 1px solid #c9a86a;
+  color: #c9a86a;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
 /* ==================== DEVELOPMENT LOG ==================== */
 
 section:nth-of-type(4) {
@@ -349,7 +364,6 @@ section:nth-of-type(4) article p {
   color: var(--muted);
   line-height: 1.8;
 }
-
 
 /* ==================== DEVELOPMENT LOG ANIMATION ==================== */
 
@@ -444,7 +458,6 @@ footer {
   animation: textReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-
 /* ==================== ABOUT TEXT ==================== */
 
 /* 1つ目：下から */
@@ -461,7 +474,6 @@ footer {
 #about > div:last-child p.reveal:nth-child(3) {
   transform: translateY(60px);
 }
-
 
 /* ==================== ABOUT TEXT DELAY ==================== */
 
