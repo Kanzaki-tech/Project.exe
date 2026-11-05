@@ -275,11 +275,20 @@ h3 {
 /* ==================== PROJECTS ==================== */
 
 #projects {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
 
-  grid-template-columns: 0.8fr 1.2fr;
+#projects > div:not(.project-modal-overlay) {
+  width: 100%;
+  max-width: 900px;
+}
 
-  gap: 10vw;
+#projects > div:not(.project-modal-overlay) > p,
+#projects > div:not(.project-modal-overlay) > h2 {
+  text-align: center;
 }
 
 #projects > div:last-child {
@@ -289,16 +298,14 @@ h3 {
 
 #projects article {
   position: relative;
-
-  padding: 50px 0;
-
+  padding: 32px 0;
   border-top: 1px solid var(--border);
-
+  text-align: center;
   transition: padding 0.3s;
 }
 
 #projects article:hover {
-  padding-left: 30px;
+  padding-left: 0;
 }
 
 #projects article span {
@@ -318,7 +325,8 @@ h3 {
 }
 
 #projects article button {
-  margin-top: 15px;
+  display: block;
+  margin: 20px auto 0;
 }
 
 /* ==================== PROJECT AWARD ==================== */
@@ -393,6 +401,43 @@ section:nth-of-type(4) article p {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+/* ==================== PROJECT SCROLL ANIMATION ==================== */
+
+/* 上から登場 */
+#projects article.reveal-from-top {
+  opacity: 0;
+  transform: translateY(-80px);
+}
+
+/* 下から登場 */
+#projects article.reveal-from-bottom {
+  opacity: 0;
+  transform: translateY(80px);
+}
+
+/* スクロールで表示 */
+#projects article.reveal-from-top.active,
+#projects article.reveal-from-bottom.active {
+  animation: projectReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes projectReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 動きを減らす設定への対応 */
+@media (prefers-reduced-motion: reduce) {
+  #projects article.reveal-from-top,
+  #projects article.reveal-from-bottom {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }
 

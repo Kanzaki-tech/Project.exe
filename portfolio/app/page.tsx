@@ -26,7 +26,7 @@ export default function Home() {
   };
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>(
-      ".reveal, .reveal-left, .reveal-right",
+      ".reveal, .reveal-left, .reveal-right, .reveal-from-top, .reveal-from-bottom",
     );
 
     const observer = new IntersectionObserver(
@@ -276,6 +276,47 @@ export default function Home() {
             )}
           </div>
         )}
+
+        {selectedProject === "hackathon" && (
+          <div
+            className={`project-modal-overlay ${isClosing ? "closing" : ""}`}
+          >
+            <div className={`project-modal ${shipporiMincho.className}`}>
+              <button
+                type="button"
+                className="project-modal-close"
+                onClick={closeProjectModal}
+              >
+                ×
+              </button>
+
+              <span>PROJECT 02</span>
+
+              <h2>Hackathon — Audience Award</h2>
+
+              <p>
+                3人チームで地方創生をテーマにした Webアプリケーションを開発。
+                Supabaseを用いたバックエンド開発を担当し、
+                オーディエンス賞を受賞しました。
+              </p>
+
+              <div className="project-modal-image">
+                <Image
+                  src="/hackathon.jpg"
+                  alt="ハッカソンの写真"
+                  width={1200}
+                  height={800}
+                />
+              </div>
+
+              <div className="project-modal-tech">
+                <span>Next.js</span>
+                <span>Supabase</span>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div>
           <p>03 — SELECTED WORKS</p>
 
@@ -287,7 +328,7 @@ export default function Home() {
         </div>
 
         <div className={shipporiMincho.className}>
-          <article>
+          <article className="reveal-left">
             <span>01</span>
 
             <h3>CALENDAR APP</h3>
@@ -312,9 +353,16 @@ export default function Home() {
               <br />
               オーディエンス賞を受賞。
             </p>
+
+            <button
+              type="button"
+              onClick={() => setSelectedProject("hackathon")}
+            >
+              VIEW PROJECT →
+            </button>
           </article>
 
-          <article>
+          <article className="reveal-from-bottom">
             <span>03</span>
 
             <h3>PROJECT THREE</h3>
