@@ -1655,3 +1655,304 @@ body {
   color: #080808;
   border-color: white;
 }
+.notification-menu {
+  position: relative;
+}
+
+.notification-icon-button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #303030;
+  border-radius: 50%;
+  background: transparent;
+  color: #aaa;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.notification-icon-button:hover {
+  background: white;
+  color: #080808;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  width: 230px;
+  padding: 18px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 16px;
+  z-index: 100;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.notification-dropdown-title {
+  margin: 0 0 14px;
+  color: white;
+  font-size: 14px;
+}
+
+.notification-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background: #1b1b1b;
+  color: #ddd;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.notification-dropdown button:hover {
+  background: #292929;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header-left h1 {
+  margin: 0;
+}
+
+.logout-button {
+  padding: 12px 18px;
+  border: 1px solid #303030;
+  border-radius: 999px;
+  background: transparent;
+  color: #888;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.logout-button:hover {
+  background: white;
+  color: #080808;
+  border-color: white;
+}
+/* ==============================
+   DAILY RECORD - NEW LAYOUT
+============================== */
+
+.day-modal {
+  width: min(100%, 620px);
+  box-sizing: border-box;
+
+  padding: 40px;
+
+  background: #111111;
+  border: 1px solid #303030;
+  border-radius: 24px;
+
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+}
+
+.modal-label {
+  margin-bottom: 8px;
+
+  color: #888;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+}
+
+.modal-date {
+  margin-bottom: 30px;
+
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* スマートフォン対応 */
+@media (max-width: 600px) {
+  .day-modal {
+    padding: 28px 20px;
+    border-radius: 18px;
+  }
+
+  .modal-date {
+    font-size: 24px;
+  }
+}
+.day-modal {
+  width: min(100%, 540px);
+  box-sizing: border-box;
+
+  padding: 24px 28px;
+
+  background: #111111;
+  border: 1px solid #303030;
+  border-radius: 20px;
+
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+}
+/* DAILY RECORD 入力項目の配置 */
+
+.record-fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.time-fields-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.time-fields-row .record-field {
+  min-width: 0;
+}
+
+.time-picker-button {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .time-fields-row {
+    grid-template-columns: 1fr;
+  }
+}
+/* カレンダーの予定プレビューを整える */
+
+.calendar-day .record-preview {
+  margin-top: 12px;
+  text-align: left;
+}
+
+.calendar-day .record-preview p,
+.calendar-day .record-preview small {
+  display: block;
+  width: 100%;
+  margin: 0;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  animation: none;
+  transform: none;
+}
+
+.calendar-day .record-preview p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.calendar-day .record-preview small {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #888;
+}
+/* カレンダー内のステータス表示 */
+.calendar-day .record-preview .status-badge {
+  display: inline-block;
+  transform: none;
+  margin: 0 0 8px;
+  padding: 4px 10px;
+
+  font-size: 11px;
+  line-height: 1.4;
+  vertical-align: top;
+}
+
+/* 複数予定の件数表示 */
+.calendar-day .more-records {
+  margin: 8px 0 0;
+  padding: 0;
+
+  text-align: left;
+  font-size: 11px;
+  color: #888;
+}
+/* カレンダーのマス目を整える */
+.calendar-day {
+  height: 160px;
+  padding: 12px;
+
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* 日付の表示 */
+.calendar-day > span:first-child {
+  display: inline-block;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* 予定の表示エリア */
+.calendar-day .record-preview {
+  width: 100%;
+  min-width: 0;
+  margin-top: 12px;
+}
+
+/* 件数表示 */
+.calendar-day .more-records {
+  margin-top: 8px;
+}
+/* カレンダー内の残り日数バッジ */
+.calendar-day .deadline {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  padding: 4px 8px;
+  margin: 0;
+
+  background: #1c1c1c;
+  border: 1px solid #383838;
+  border-radius: 999px;
+
+  color: #aaa;
+  font-size: 10px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+/* 今日の日付の丸を修正 */
+.calendar-day.today > span:first-child {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  box-sizing: border-box;
+
+  border-radius: 50%;
+  background: white;
+  color: black;
+
+  font-size: 14px;
+  line-height: 1;
+}
+/* 今日の日付を他の日付と同じ上端に揃える */
+.calendar-day.today > span:first-child {
+  vertical-align: top;
+}
+/* すべての日付を同じ位置に固定する */
+.calendar-day > span:first-child {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  line-height: 1;
+}
