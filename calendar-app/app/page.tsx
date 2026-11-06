@@ -29,6 +29,7 @@ export default function Home() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [authError, setAuthError] = useState("");
   const [authMessage, setAuthMessage] = useState("");
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   useEffect(() => {
     const getCurrentUser = async () => {
       const {
@@ -587,30 +588,38 @@ export default function Home() {
     <main className={`calendar-page ${shipporiMincho.className}`}>
       <header className="calendar-header">
         <div className="calendar-header-top">
-          <div className="calendar-title-area">
+          <div className="header-left">
             <h1>Calendar</h1>
 
-            <button className="logout-button" onClick={signOut}>
+            <button type="button" className="logout-button" onClick={signOut}>
               LOGOUT
             </button>
-            <button
-              type="button"
-              className="notification-button"
-              onClick={requestNotificationPermission}
-            >
-              通知を有効にする
-            </button>
 
-            <button
-              type="button"
-              className="notification-button"
-              onClick={subscribeToPush}
-            >
-              Push購読を登録
-            </button>
-            <button type="button" onClick={subscribeToPush}>
-              Push購読を登録
-            </button>
+            <div className="notification-menu">
+              <button
+                type="button"
+                className="notification-icon-button"
+                aria-label="通知設定を開く"
+                aria-expanded={isNotificationOpen}
+                onClick={() => setIsNotificationOpen(!isNotificationOpen)}
+              >
+                🔔
+              </button>
+
+              {isNotificationOpen && (
+                <div className="notification-dropdown">
+                  <p className="notification-dropdown-title">通知設定</p>
+
+                  <button type="button" onClick={requestNotificationPermission}>
+                    通知を有効にする
+                  </button>
+
+                  <button type="button" onClick={subscribeToPush}>
+                    Push購読を登録
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="month-selector">
@@ -685,7 +694,7 @@ export default function Home() {
                   {dayRecords.some((record) => record.status !== "完了") &&
                     daysLeft >= 0 && (
                       <span className="deadline">
-                        {daysLeft === 0 ? "今日まで" : `${daysLeft}日`}
+                        {daysLeft === 0 ? "今日まで" : `あと${daysLeft}日`}
                       </span>
                     )}
 
