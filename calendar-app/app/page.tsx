@@ -593,8 +593,20 @@ export default function Home() {
             <button className="logout-button" onClick={signOut}>
               LOGOUT
             </button>
-            <button type="button" onClick={requestNotificationPermission}>
+            <button
+              type="button"
+              className="notification-button"
+              onClick={requestNotificationPermission}
+            >
               通知を有効にする
+            </button>
+
+            <button
+              type="button"
+              className="notification-button"
+              onClick={subscribeToPush}
+            >
+              Push購読を登録
             </button>
             <button type="button" onClick={subscribeToPush}>
               Push購読を登録

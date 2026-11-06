@@ -1637,3 +1637,21 @@ body {
 .time-fields-row .time-picker-button {
   width: 100%;
 }
+.notification-button {
+  padding: 12px 18px;
+  background: transparent;
+  color: #aaa;
+  border: 1px solid #303030;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.notification-button:hover {
+  background: white;
+  color: #080808;
+  border-color: white;
+}
