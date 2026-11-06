@@ -196,6 +196,7 @@ body {
     transform: scale(1);
   }
 }
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -357,6 +358,7 @@ body {
 .delete-button:hover {
   background: rgba(255, 70, 70, 0.2);
 }
+
 .calendar-day.today span {
   display: inline-flex;
   align-items: center;
@@ -424,6 +426,7 @@ body {
     transform: translateX(-100%);
   }
 }
+
 .search-hidden {
   opacity: 0.15;
 }
@@ -484,6 +487,7 @@ body {
 .search-box input::placeholder {
   color: #555;
 }
+
 .calendar-header-top h1 {
   margin: 0;
   flex-shrink: 0;
@@ -492,6 +496,7 @@ body {
 .month-selector {
   flex-shrink: 0;
 }
+
 .hover-card {
   position: fixed;
 
@@ -529,18 +534,21 @@ body {
 
   overscroll-behavior-y: contain;
 }
+
 .calendar-day:hover .hover-card {
   opacity: 1;
   visibility: visible;
 
   transform: translate(-50%, -50%) scale(1);
 }
+
 .hover-label {
   margin-bottom: 5px;
   color: #777;
   font-size: 11px;
   letter-spacing: 0.12em;
 }
+
 .status-badge {
   display: inline-block;
   padding: 4px 9px;
@@ -553,7 +561,8 @@ body {
   letter-spacing: 0.08em;
   white-space: nowrap;
 }
-.status-未着手 {
+
+.status-譛ｪ逹謇� {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.18);
   opacity: 0.7;
@@ -561,20 +570,21 @@ body {
   transform: translateY(5px);
 }
 
-.status-進行中 {
+.status-騾ｲ陦御ｸｭ {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.4);
 
   transform: translateY(5px);
 }
 
-.status-完了 {
+.status-螳御ｺ� {
   background: white;
   border-color: white;
   color: #080808;
 
   transform: translateY(5px);
 }
+
 .status-field {
   margin-bottom: 20px;
 }
@@ -606,10 +616,12 @@ body {
   border-color: rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.08);
 }
+
 .status-field select option {
   background: #151515;
   color: white;
 }
+
 .status-field {
   margin-bottom: 20px;
 }
@@ -651,6 +663,7 @@ body {
 
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.08);
 }
+
 .deadline-button {
   position: fixed;
   right: 20px;
@@ -770,6 +783,7 @@ body {
 
   transform: rotate(90deg);
 }
+
 .deadline-panel-overlay.closing {
   animation: deadlineOverlayClose 0.35s ease forwards;
 }
@@ -799,6 +813,7 @@ body {
     opacity: 0;
   }
 }
+
 .deadline-panel {
   position: absolute;
   top: 0;
@@ -817,6 +832,7 @@ body {
 
   animation: deadlinePanelOpen 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .deadline-item {
   padding: 22px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -842,6 +858,7 @@ body {
 .deadline-item-days {
   font-size: 12px;
 }
+
 .deadline-section-label {
   margin: 30px 0 16px;
 
@@ -856,6 +873,7 @@ body {
   margin-top: 50px;
   color: #888;
 }
+
 .deadline-section-label {
   margin: 30px 0 16px;
   padding-bottom: 10px;
@@ -868,6 +886,7 @@ body {
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
+
 .ai-button {
   position: fixed;
   right: 155px;
@@ -1079,6 +1098,7 @@ body {
     opacity: 0;
   }
 }
+
 .auth-container {
   width: min(420px, 90vw);
   margin: 120px auto 0;
@@ -1138,6 +1158,7 @@ body {
 .auth-container button:hover {
   opacity: 0.8;
 }
+
 .calendar-title-area {
   display: flex;
   align-items: center;
@@ -1166,6 +1187,7 @@ body {
   color: #080808;
   border-color: white;
 }
+
 .auth-container .auth-switch {
   padding: 6px;
 
@@ -1186,7 +1208,6 @@ body {
   color: #fff;
   opacity: 1;
 }
-/* リマインダー設定 */
 
 .day-modal select {
   width: 100%;
@@ -1216,12 +1237,11 @@ body {
   background: #151515;
   color: white;
 }
-/* 時刻入力欄の時計アイコンを白色にする */
+
 .day-modal input[type="time"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
   cursor: pointer;
 }
-/* ===== 時刻選択ボタン ===== */
 
 .time-picker-button {
   width: 100%;
@@ -1252,8 +1272,6 @@ body {
   font-size: 20px;
   color: #aaa;
 }
-
-/* ===== 時刻選択モーダル ===== */
 
 .time-picker-overlay {
   position: fixed;
@@ -1298,8 +1316,6 @@ body {
   font-weight: 500;
 }
 
-/* ===== 時間・分の選択欄 ===== */
-
 .time-picker-selects {
   display: flex;
   align-items: center;
@@ -1341,8 +1357,6 @@ body {
   font-size: 28px;
 }
 
-/* ===== 決定ボタン ===== */
-
 .time-picker-confirm {
   width: 100%;
   padding: 15px;
@@ -1365,8 +1379,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===== 表示アニメーション ===== */
-
 @keyframes timePickerOpen {
   from {
     opacity: 0;
@@ -1378,7 +1390,6 @@ body {
     transform: translateY(0) scale(1);
   }
 }
-/* ===== スクロール式の時刻選択 ===== */
 
 .time-picker-column {
   flex: 1;
@@ -1438,7 +1449,6 @@ body {
   color: #101010;
   font-weight: 600;
 }
-/* ホバーカードの開始時刻 */
 
 .hover-event-time {
   display: flex;
@@ -1454,11 +1464,11 @@ body {
 }
 
 .hover-event-time::before {
-  content: "◷";
+  content: "笳ｷ";
   color: #aaaaaa;
   font-size: 20px;
 }
-/* リマインダーの選択肢 */
+
 .reminder-options {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1490,7 +1500,6 @@ body {
   font-weight: 600;
 }
 
-/* 通知する数値・時刻 */
 .reminder-value-field {
   margin-bottom: 20px;
 }
@@ -1513,6 +1522,7 @@ body {
   outline: none;
   border-color: rgba(255, 255, 255, 0.5);
 }
+
 .reminder-number-list {
   height: 160px;
   max-width: 240px;
@@ -1523,6 +1533,7 @@ body {
   font-size: 16px;
   padding: 12px;
 }
+
 .add-record-button {
   width: 100%;
   padding: 12px 16px;
@@ -1637,6 +1648,7 @@ body {
 .time-fields-row .time-picker-button {
   width: 100%;
 }
+
 .notification-button {
   padding: 12px 18px;
   background: transparent;
@@ -1655,6 +1667,7 @@ body {
   color: #080808;
   border-color: white;
 }
+
 .notification-menu {
   position: relative;
 }
@@ -1711,6 +1724,7 @@ body {
 .notification-dropdown button:hover {
   background: #292929;
 }
+
 .header-left {
   display: flex;
   align-items: center;
@@ -1772,7 +1786,6 @@ body {
   letter-spacing: 0.03em;
 }
 
-/* スマートフォン対応 */
 @media (max-width: 600px) {
   .day-modal {
     padding: 28px 20px;
@@ -1783,6 +1796,7 @@ body {
     font-size: 24px;
   }
 }
+
 .day-modal {
   width: min(100%, 540px);
   box-sizing: border-box;
@@ -1795,7 +1809,6 @@ body {
 
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
 }
-/* DAILY RECORD 入力項目の配置 */
 
 .record-fields {
   display: grid;
@@ -1823,9 +1836,13 @@ body {
     grid-template-columns: 1fr;
   }
 }
-/* カレンダーの予定プレビューを整える */
+/* ==============================
+   CALENDAR GRID - CURRENT DESIGN
+   ============================== */
 
 .calendar-day .record-preview {
+  width: 100%;
+  min-width: 0;
   margin-top: 12px;
   text-align: left;
 }
@@ -1854,7 +1871,6 @@ body {
   font-size: 11px;
   color: #888;
 }
-/* カレンダー内のステータス表示 */
 .calendar-day .record-preview .status-badge {
   display: inline-block;
   transform: none;
@@ -1866,7 +1882,6 @@ body {
   vertical-align: top;
 }
 
-/* 複数予定の件数表示 */
 .calendar-day .more-records {
   margin: 8px 0 0;
   padding: 0;
@@ -1875,7 +1890,7 @@ body {
   font-size: 11px;
   color: #888;
 }
-/* カレンダーのマス目を整える */
+
 .calendar-day {
   height: 160px;
   padding: 12px;
@@ -1884,25 +1899,6 @@ body {
   overflow: visible;
 }
 
-/* 日付の表示 */
-.calendar-day > span:first-child {
-  display: inline-block;
-  font-size: 15px;
-  line-height: 1.4;
-}
-
-/* 予定の表示エリア */
-.calendar-day .record-preview {
-  width: 100%;
-  min-width: 0;
-  margin-top: 12px;
-}
-
-/* 件数表示 */
-.calendar-day .more-records {
-  margin-top: 8px;
-}
-/* カレンダー内の残り日数バッジ */
 .calendar-day .deadline {
   position: absolute;
   top: 12px;
@@ -1920,7 +1916,7 @@ body {
   line-height: 1.4;
   white-space: nowrap;
 }
-/* 今日の日付の丸を修正 */
+
 .calendar-day.today > span:first-child {
   display: inline-flex;
   align-items: center;
@@ -1938,11 +1934,7 @@ body {
   font-size: 14px;
   line-height: 1;
 }
-/* 今日の日付を他の日付と同じ上端に揃える */
-.calendar-day.today > span:first-child {
-  vertical-align: top;
-}
-/* すべての日付を同じ位置に固定する */
+
 .calendar-day > span:first-child {
   position: absolute;
   top: 12px;
@@ -1954,5 +1946,6 @@ body {
 
   width: 32px;
   height: 32px;
+  font-size: 15px;
   line-height: 1;
 }
