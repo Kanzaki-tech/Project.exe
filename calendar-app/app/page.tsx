@@ -493,6 +493,47 @@ export default function Home() {
     }
   };
 
+  const subscribeToPush = async () => {
+    if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
+      alert("このブラウザはWeb Pushに対応していません");
+      return;
+    }
+
+    if (Notification.permission !== "granted") {
+      alert("先に通知を許可してください");
+      return;
+    }
+
+    const registration = await navigator.serviceWorker.ready;
+
+    const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+
+    if (!publicKey) {
+      console.error("VAPID公開鍵が設定されていません");
+      return;
+    }
+
+    const padding = "=".repeat((4 - (publicKey.length % 4)) % 4);
+    const base64 = (publicKey + padding).replace(/-/g, "+").replace(/_/g, "/");
+
+    const raw = atob(base64);
+    const applicationServerKey = Uint8Array.from(raw, (char) =>
+      char.charCodeAt(0),
+    );
+
+    try {
+      const subscription = await registration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey,
+      });
+
+      console.log("Push購読成功:", subscription.endpoint);
+      alert("Push購読に成功しました！");
+    } catch (error) {
+      console.error("Push購読エラー:", error);
+    }
+  };
+
   if (!user) {
     return (
       <main className={`calendar-page ${shipporiMincho.className}`}>
@@ -554,6 +595,9 @@ export default function Home() {
             </button>
             <button type="button" onClick={requestNotificationPermission}>
               通知を有効にする
+            </button>
+            <button type="button" onClick={subscribeToPush}>
+              Push購読を登録
             </button>
           </div>
 
