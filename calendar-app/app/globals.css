@@ -138,17 +138,18 @@ body {
 }
 
 .calendar-day {
+  position: relative;
+
   min-width: 0;
-
-  height: 100px;
-
-  padding: 15px;
+  height: 160px;
+  padding: 12px;
+  box-sizing: border-box;
 
   border-right: 1px solid #222;
   border-bottom: 1px solid #222;
 
+  overflow: visible;
   transition: 0.3s;
-  position: relative;
 }
 
 .calendar-day:hover {
@@ -357,21 +358,6 @@ body {
 
 .delete-button:hover {
   background: rgba(255, 70, 70, 0.2);
-}
-
-.calendar-day.today span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 32px;
-  height: 32px;
-
-  background: white;
-  color: black;
-
-  border-radius: 50%;
-  font-weight: 600;
 }
 
 .record-preview p,
@@ -1464,7 +1450,7 @@ body {
 }
 
 .hover-event-time::before {
-  content: "笳ｷ";
+  content: "⏰";
   color: #aaaaaa;
   font-size: 20px;
 }
@@ -1843,7 +1829,7 @@ body {
 .calendar-day .record-preview {
   width: 100%;
   min-width: 0;
-  margin-top: 12px;
+  margin-top: 44px;
   text-align: left;
 }
 
@@ -1889,14 +1875,6 @@ body {
   text-align: left;
   font-size: 11px;
   color: #888;
-}
-
-.calendar-day {
-  height: 160px;
-  padding: 12px;
-
-  box-sizing: border-box;
-  overflow: visible;
 }
 
 .calendar-day .deadline {

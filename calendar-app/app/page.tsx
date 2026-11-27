@@ -248,7 +248,10 @@ export default function Home() {
             .single();
 
     if (error) {
-      console.error("保存エラー:", error);
+      console.error("保存エラー:", error.message);
+      console.log("エラーコード:", error.code);
+      console.log("詳細:", error.details);
+      console.log("ヒント:", error.hint);
       return;
     }
 
@@ -527,9 +530,42 @@ export default function Home() {
         userVisibleOnly: true,
         applicationServerKey,
       });
+      const subscriptionData = subscription.toJSON();
+      const {
+        data: { user },
+        error: userError,
+      } = await supabase.auth.getUser();
 
-      console.log("Push購読成功:", subscription.endpoint);
-      alert("Push購読に成功しました！");
+      if (userError || !user) {
+        console.error("ユーザー取得エラー:", userError);
+        return;
+      }
+
+      if (!subscriptionData.keys?.p256dh || !subscriptionData.keys?.auth) {
+        console.error("購読情報の取得に失敗しました");
+        return;
+      }
+
+      const { error } = await supabase.from("push_subscriptions").upsert(
+        {
+          user_id: user.id,
+          platform: "web",
+          endpoint: subscription.endpoint,
+          p256dh: subscriptionData.keys.p256dh,
+          auth_key: subscriptionData.keys.auth,
+        },
+        {
+          onConflict: "user_id,endpoint",
+          ignoreDuplicates: true,
+        },
+      );
+
+      if (error) {
+        console.error("購読情報の保存エラー:", error.message);
+        return;
+      }
+
+      alert("Push購読情報を保存しました！");
     } catch (error) {
       console.error("Push購読エラー:", error);
     }
