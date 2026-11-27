@@ -1,3 +1,4 @@
+import { processNotificationJob } from "@/lib/processNotificationJob";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
@@ -37,8 +38,34 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({
-    success: true,
-    count: data.length,
-  });
+  let sent = 0;
+let failed = 0;
+let skipped = 0;
+let errors = 0;
+
+for (const job of data) {
+  try {
+    const result = await processNotificationJob(job);
+
+    if (result === "sent") {
+      sent++;
+    } else if (result === "failed") {
+      failed++;
+    } else {
+      skipped++;
+    }
+  } catch {
+    errors++;
+    console.error("通知予約処理エラー:", job.id);
+  }
+}
+
+return NextResponse.json({
+  success: errors === 0,
+  count: data.length,
+  sent,
+  failed,
+  skipped,
+  errors,
+});
 }
